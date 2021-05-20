@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface PersonajeRepository extends JpaRepository<Personaje, Long> {
 
     Optional<Personaje> findPersonajeByNombre(String nombre);
+
 }

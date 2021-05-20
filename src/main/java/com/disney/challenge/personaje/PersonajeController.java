@@ -26,4 +26,14 @@ public class PersonajeController {
         personajeService.addNewPersonaje(personaje);
     }
 
+    @PutMapping(path = "{personajeId}")
+    public void updatePersonaje(@RequestBody Personaje personaje, @PathVariable("personajeId") Long personajeId){
+        personajeService.updatePersonaje(personajeId, personaje);
+    }
+
+    @DeleteMapping(path = "{personajeId}")
+    public void deletePersonaje(@PathVariable("personajeId") Long personajeId){
+        personajeService.deletePersonaje(personajeId);
+
+    }
 }

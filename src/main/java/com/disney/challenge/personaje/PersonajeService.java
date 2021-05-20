@@ -26,6 +26,25 @@ public class PersonajeService {
             throw new IllegalStateException("Ya hay un personaje con este nombre");
         }
         personajeRepository.save(personaje);
+    }
+
+    public void updatePersonaje(Long personajeId, Personaje personaje) {
+        Personaje personajeAux = personajeRepository.findById(personajeId).orElseThrow(()-> new IllegalStateException("El personaje con el id " + personajeId +" no existe"));
+        personajeAux.setNombre(personaje.getNombre());
+        personajeAux.setEdad(personaje.getEdad());
+        personajeAux.setPeso(personaje.getPeso());
+        personajeAux.setHistoria(personaje.getHistoria());
+        personajeRepository.save(personajeAux);
+
 
     }
+
+    public void deletePersonaje(Long personajeId) {
+        boolean exists = (personajeRepository.existsById(personajeId));
+        if (!exists){
+            throw new IllegalStateException("El personaje con id " + personajeId + " no existe");
+        }
+        personajeRepository.deleteById(personajeId);
+    }
+
 }
