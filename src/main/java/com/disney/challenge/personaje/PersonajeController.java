@@ -1,14 +1,12 @@
 package com.disney.challenge.personaje;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/personaje")
+@RequestMapping(path = "api/v1/characters")
 public class PersonajeController {
 
     private final PersonajeService personajeService;
@@ -21,6 +19,11 @@ public class PersonajeController {
     @GetMapping
     public List<Personaje> getPesonajes() {
         return personajeService.getPersonajes();
+    }
+
+    @PostMapping
+    public void registerNewCharacter(@RequestBody Personaje personaje){
+        personajeService.addNewPersonaje(personaje);
     }
 
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/genero")
+@RequestMapping(path = "api/v1/genders")
 public class GeneroController {
 
     private final GeneroService generoService;
