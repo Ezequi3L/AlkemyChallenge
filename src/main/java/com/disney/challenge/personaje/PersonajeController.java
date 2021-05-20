@@ -17,8 +17,8 @@ public class PersonajeController {
     }
 
     @GetMapping
-    public List<Personaje> getPesonajes() {
-        return personajeService.getPersonajes();
+    public List<Personaje> getPersonajes() {
+        return personajeService.getPersonajes() ;
     }
 
     @PostMapping

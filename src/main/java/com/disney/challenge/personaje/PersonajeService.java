@@ -16,6 +16,10 @@ public class PersonajeService {
         this.personajeRepository = personajeRepository;
     }
 
+   /* public List<Personaje> getPersonajesNombres() {
+        return personajeRepository.getPersonajesNombres();
+    }*/
+
     public List<Personaje> getPersonajes() {
         return personajeRepository.findAll();
     }

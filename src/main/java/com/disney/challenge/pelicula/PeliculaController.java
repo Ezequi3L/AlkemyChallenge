@@ -1,9 +1,8 @@
 package com.disney.challenge.pelicula;
 
+import com.disney.challenge.personaje.Personaje;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +20,22 @@ public class PeliculaController {
     @GetMapping
     public List<Pelicula> getPeliculas() {
         return peliculaService.getPeliculas();
+    }
+
+    @PostMapping
+    public void registerNewPelicula(@RequestBody Pelicula pelicula){
+        peliculaService.addNewPelicula(pelicula);
+    }
+
+    @PutMapping(path = "{peliculaId}")
+    public void updatePelicula(@RequestBody Pelicula pelicula, @PathVariable("peliculaId") Long peliculaId){
+        peliculaService.updatePelicula(peliculaId, pelicula);
+    }
+
+    @DeleteMapping(path = "{peliculaId}")
+    public void deletePelicula(@PathVariable("peliculaId") Long peliculaId){
+        peliculaService.deletePelicula(peliculaId);
+
     }
 
 }
