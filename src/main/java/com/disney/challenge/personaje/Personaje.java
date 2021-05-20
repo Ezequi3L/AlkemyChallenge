@@ -1,20 +1,25 @@
 package com.disney.challenge.personaje;
 
+import com.disney.challenge.pelicula.Pelicula;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table
+@Table (name="personajes")
 public class Personaje {
     @Id
-    @SequenceGenerator(name = "personaje_sequence", sequenceName = "personaje_sequence", allocationSize = 1)
-
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "personaje_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "personajeID")
     private Long id;
 
     private String nombre;
     private Integer edad;
     private Float peso;
     private String historia;
+
+    @ManyToMany(mappedBy = "personajes")
+    private Set<Pelicula> peliculas;
 
     public Personaje() {
     }
@@ -78,10 +83,10 @@ public class Personaje {
     public String toString() {
         return "Character{" +
                 "id=" + id +
-                ", name='" + nombre + '\'' +
-                ", age=" + edad +
-                ", weight=" + peso +
-                ", history='" + historia + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", peso=" + peso +
+                ", historia='" + historia + '\'' +
                 '}';
     }
 }
